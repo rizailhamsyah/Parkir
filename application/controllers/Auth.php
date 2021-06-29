@@ -14,6 +14,13 @@ class Auth extends CI_Controller {
 		$this->load->view('Auth/Index', $data);
 	}
 
+    public function out()
+    {
+        $this->session->sess_destroy();
+        // get_cookie('uFapFap');
+        redirect('Login');
+    }
+
     public function sign()
 		{
 			$username = trim($_POST['uname']);
@@ -40,5 +47,7 @@ class Auth extends CI_Controller {
 				// $this->M_admin->update_cookie($cookie); 
 				redirect('Dashboard');
 			}
+
+            
 		}
 }

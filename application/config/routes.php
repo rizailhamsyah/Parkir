@@ -54,10 +54,17 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['Auth/sign']      = 'auth/sign';
+$route['Logout']         = 'auth/out';
+
 $route['Dashboard']      = 'Redaktur/Dashboard';
+
+
 $route['Data_Masuk']     = 'Redaktur/Data_Masuk';
 $route['Data_Keluar']    = 'Redaktur/Data_Keluar';
+
+
 $route['Data_Kendaraan'] = 'Redaktur/Data_Kendaraan';
+$route['Data_Kendaraan/Simpan_Data'] = 'Redaktur/Data_Kendaraan/add';
 
 
 // Data Akun

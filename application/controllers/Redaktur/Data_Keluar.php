@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Data_Keluar extends CI_Controller {
+class Data_Keluar extends AUTH_Controller {
 
 	
 	public function index()

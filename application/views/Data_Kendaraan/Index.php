@@ -11,6 +11,7 @@
                         <div class="col-12 col-md-6 order-md-1 order-last">
                             <h3><?= $title; ?></h3>
                             <p class="text-subtitle text-muted">Parkir</p>
+                            <?= $this->session->flashdata('msg') ?>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -41,23 +42,35 @@
                                         <th>NIK</th>
                                         <th>Nomor Polisi</th>
                                         <th>Perusahaan</th>
-                                        <th>Tanggal</th>
+                                        <th>Jenis Kendaraan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php $i=1; foreach ($kendaraan as $key) : ?>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Riza Ilhamsyah</td>
-                                        <td>E 4935 YAH</td>
-                                        <td>3208081210000008</td>
-                                        <td>PT. Jaya Abadi</td>
-                                        <td>12-04-2021</td>
+                                        <td><?= $i++ ?></td>
+                                        <td><?= $key->nama_pemilik ?></td>
+                                        <td><?= $key->nik_pemilik?></td>
+                                        <td><?= $key->no_polisi ?></td>
+                                        <td><?= $this->db->get_where('parkir_agency', ['perusahaan_id' => $key->id_perusahaan])->row()->nama_perusahaan ?></td>
+                                        <td>
+                                            <?php 
+                                                if ($key->Jenis_Kendaraan == 1){
+                                                    echo "Roda Dua";
+                                                } else if ($key->Jenis_Kendaraan == 2){
+                                                    echo "Roda Tiga";
+                                                } else if ($key->Jenis_Kendaraan == 3){
+                                                    echo "Roda Empat";
+                                                }
+                                            ?>
+                                        </td>
                                         <td>
                                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view_qrcode"><i class="fas fa-qrcode"></i></button>
                                             <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#edit"><i class="fas fa-pencil-alt"></i></button>
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus"><i class="fas fa-trash-alt"></i></button>
                                     </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -67,38 +80,7 @@
             </div>
 
             <!-- Modal Tambah Data Start -->  
-            <div class="modal fade text-left" id="tambah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="myModalLabel1">Tambah Data</h5>
-                                <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close"><i data-feather="x"></i></button>
-                        </div>
-                            <div class="modal-body">
-                                <form action="<?= base_url(); ?>Data_Kendaraan/Delete_Data/" method="post">
-                                    <div class="form-group">
-                                        <label for="Nama" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="Nama" name="Nama" placeholder="Masukkan Nama">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="NIK" class="form-label">NIK</label>
-                                        <input type="text" class="form-control" id="NIK" name="NIK" placeholder="Masukkan NIK">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Nomor_Polisi" class="form-label">Nomor Polisi</label>
-                                        <input type="text" class="form-control" id="Nomor_Polisi" name="Nomor_Polisi" placeholder="Masukkan Nomor Polisi">
-                                    </div>
-                            </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn" data-bs-dismiss="modal">
-                                <i class="bx bx-x d-block d-sm-none"></i><span class="d-none d-sm-block">Close</span>
-                            </button>
-                            <button type="submit" class="btn btn-primary ml-1" value="1"><i class="bx bx-check d-block d-sm-none"></i><span class="d-none d-sm-block">Simpan Data</span></button>
-                                </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php include 'tambah.php' ?>
             <!-- Modal Tambah Data End -->
 
             <!-- Modal Hapus Data Start -->  

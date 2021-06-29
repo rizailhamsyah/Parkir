@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendors/simple-datatables/style.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/app.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendors/fontawesome/all.min.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>assets/vendors/choices.js/choices.min.css" />
     <link rel="shortcut icon" href="<?= base_url(); ?>assets/images/favicon.svg" type="image/x-icon">
 </head>
 

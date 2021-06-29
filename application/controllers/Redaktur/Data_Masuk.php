@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Data_Masuk extends CI_Controller {
+class Data_Masuk extends AUTH_Controller {
 
 	
 	public function index()
