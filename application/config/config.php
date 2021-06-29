@@ -23,7 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/Parkir/';
+$config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
+$config['base_url']	.= "://" . $_SERVER['HTTP_HOST'];
+$config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
 
 /*
 |--------------------------------------------------------------------------
@@ -114,7 +116,7 @@ $config['enable_hooks'] = FALSE;
 | https://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'MY_';
+$config['subclass_prefix'] = 'AUTH_';
 
 /*
 |--------------------------------------------------------------------------
@@ -521,3 +523,29 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+
+/*
+|-------------------------------------------------------------------------
+| Copyright
+| Nama 			= Riza Ilhamzyah
+|                 Mohammad Irwansyah Somantri
+|                 Andrey Andriansyah
+|                 Syarif Hidayat
+| PT     		= Universitas Kuningan
+| Prodi 		= Teknik Informatika
+| Email 		= - 20190810043@uniku.ac.id
+|			 	  - 20190810004@uniku.ac.id
+|                 - 20190810018@uniku.ac.id
+| No Telp/WA 	= 083825287989  (Irwansyah)
+|                 089675677955  (Andrey)
+|                 
+|-------------------------------------------------------------------------
+*/
+$config['base_name_app'] 	= 	'Parkir';
+$config['base_name'] 		= 	'Parkir';
+$config['version']			=	'1.0';
+$config['author']			=	'Pratama Solusindo';
+$config['date_created']		=	'22 Days Ago, Before Selasa, 11 Mei 2021';
+$config['instance_name']	=	'Pratama Solusindo';
+$config['instance_logo']	=	'1.png';

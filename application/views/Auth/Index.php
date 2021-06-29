@@ -22,15 +22,16 @@
                         <h1 href="#">Parkir</h1>
                     </div>
                     <h3 class="auth-title">Log in.</h3>
-                    <form action="#" method="post">
+                    <?= $this->session->flashdata("msg") ?>
+                    <form action="<?= base_url('Auth/sign') ?>" method="post">
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="email" class="form-control form-control-xl" placeholder="Email">
+                            <input type="email" class="form-control form-control-xl" placeholder="Email" name="uname">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl" placeholder="Password">
+                            <input type="password" class="form-control form-control-xl" placeholder="Password" name="passwd">
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
